@@ -1,4 +1,4 @@
-🩺 Doctor Appointment Application
+# 🩺  Doctor Appointment Application
 
 Aplicación web para gestionar citas médicas con doctores y oficinas, desarrollada con **Spring Boot (Java)** en el backend y **React** en el frontend (compilado y servido desde `resources/static`).
 
