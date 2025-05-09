@@ -1,0 +1,33 @@
+services:
+  spring-boot:
+    build:
+      context: .
+      dockerfile: Dockerfile  # Dockerfile de Spring Boot
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/doctor_application  # Usando el contenedor de postgres
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    depends_on:
+      - postgres  # Depende de postgres
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: doctor_application
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    networks:
+      - app-network
+    volumes:
+      - postgres-data:/var/lib/postgresql/data  # Volumen para persistencia de datos
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
