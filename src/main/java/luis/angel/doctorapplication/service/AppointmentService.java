@@ -102,6 +102,7 @@ public class AppointmentService {
     }
 
     private void validations(AppointmentCreateDto appointmentCreateDto) {
+        log.info(appointmentCreateDto.getOfficeId());
         LocalDateTime start = appointmentCreateDto.getSchedule();
         LocalDate date = start.toLocalDate();
         LocalDateTime from = date.atStartOfDay();

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
 
+@CrossOrigin()
 @RestController()
 @RequestMapping("/api/appointment")
 public class AppointmentController {
@@ -20,15 +21,20 @@ public class AppointmentController {
         this.appointmentService = appointmentService;
     }
 
-    @PostMapping
+    @GetMapping("/test")
+    public String test() {
+        return "Endpoint de prueba funcionando!";
+    }
+
+    @PostMapping()
     public ResponseEntity<Appointment> createAppointment(@RequestBody AppointmentCreateDto appointment) throws BadRequestException {
         return appointmentService.create(appointment);
     }
 
     @GetMapping()
-    public List<Appointment> findAllAppointments(@RequestParam LocalDate date,
-                                                                 @RequestParam String doctorId,
-                                                                 @RequestParam String officeId) {
+    public List<Appointment> findAllAppointments(@RequestParam(name = "date") LocalDate date,
+                                                 @RequestParam(required = false) String doctorId,
+                                                 @RequestParam(required = false) String officeId) {
         return appointmentService.findAllAppointments(date, doctorId, officeId);
     }
 

@@ -4,6 +4,7 @@ import luis.angel.doctorapplication.entity.Office;
 import luis.angel.doctorapplication.repository.OfficeRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -17,5 +18,9 @@ public class OfficeService {
 
     public Optional<Office> getOfficeById(String id) {
         return officeRepository.findById(UUID.fromString(id));
+    }
+
+    public List<Office> findAll() {
+        return officeRepository.findAll();
     }
 }

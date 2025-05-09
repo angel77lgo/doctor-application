@@ -4,6 +4,7 @@ import luis.angel.doctorapplication.entity.Doctor;
 import luis.angel.doctorapplication.repository.DoctorRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -18,6 +19,10 @@ public class DoctorService {
 
     public Optional<Doctor> findById(String id) {
         return doctorRepository.findById(UUID.fromString(id));
+    }
+
+    public List<Doctor> findAll() {
+        return doctorRepository.findAll();
     }
 
 }
