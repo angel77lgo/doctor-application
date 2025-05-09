@@ -23,7 +23,8 @@ public class Appointment {
     @JoinColumn(name = "office_id")
     private Office office;
 
-    private String patient_name;
+    @Column(name = "patient_name")
+    private String patientName;
 
     private LocalDateTime schedule;
 }
